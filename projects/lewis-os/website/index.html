@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lewis OS — Danika</title>
+  <meta name="description" content="Lewis OS transforms ideas into build-ready ventures. Danika is its first living product.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f5;
+      --surface: rgba(255,255,255,.72);
+      --text: #111318;
+      --muted: #656b75;
+      --border: rgba(17,19,24,.12);
+      --button: #111318;
+      --button-text: #fff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #090b0f;
+        --surface: rgba(18,21,27,.82);
+        --text: #f5f7fa;
+        --muted: #98a2b1;
+        --border: rgba(255,255,255,.12);
+        --button: #f5f7fa;
+        --button-text: #090b0f;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    main {
+      width: min(960px, calc(100% - 40px));
+      margin: auto;
+      padding: 96px 0;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 18px 0;
+      font-size: clamp(48px, 9vw, 100px);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.65;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .button {
+      padding: 13px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+
+    .primary {
+      background: var(--button);
+      color: var(--button-text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 90px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+    }
+
+    .price {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .danika {
+      margin-top: 90px;
+      padding-top: 50px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 64px 0; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">Lewis OS · Powered by neoOS</span>
+
+    <h1>Turn one idea into a venture.</h1>
+
+    <p class="lead">
+      Lewis OS transforms unfinished ideas into structured,
+      build-ready and presentation-ready projects.
+      Danika is its first living product.
+    </p>
+
+    <div class="actions">
+      <a class="button primary" href="#danika">Explore Danika</a>
+      <a class="button" href="../README.md">Read the blueprint</a>
+    </div>
+
+    <section class="grid">
+      <article class="card">
+        <span class="eyebrow">01</span>
+        <h2>Discover</h2>
+        <p>Transform the initial idea into clarity.</p>
+        <div class="price">$96.3</div>
+      </article>
+
+      <article class="card">
+        <span class="eyebrow">02</span>
+        <h2>Define</h2>
+        <p>Transform clarity into a build-ready project.</p>
+        <div class="price">$96.3</div>
+      </article>
+
+      <article class="card">
+        <span class="eyebrow">03</span>
+        <h2>Present</h2>
+        <p>Prepare the project for builders, partners and investors.</p>
+        <div class="price">$96.3</div>
+      </article>
+    </section>
+
+    <section class="danika" id="danika">
+      <span class="eyebrow">First Product</span>
+      <h2>Danika</h2>
+      <p class="lead">
+        A guided system for transforming ideas into structured ventures,
+        while preserving human judgment, ownership and clarity.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
