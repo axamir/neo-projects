@@ -150,6 +150,31 @@
     .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .service-card { min-height: 260px; }
     .service-card h3 { margin: 70px 0 10px; font-size: 27px; }
+    .library { background: #0a0d10; border-block: 1px solid var(--line); }
+    .library-intro { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 36px; }
+    .repo-link { display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); white-space: nowrap; transition: .25s ease; }
+    .repo-link:hover { color: var(--text); border-color: rgba(157,248,205,.45); background: var(--accent-soft); }
+    .repo-link::after { content: "↗"; color: var(--accent); }
+    .library-map { display: grid; grid-template-columns: 260px 1fr; gap: 20px; }
+    .tree { position: sticky; top: 112px; align-self: start; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
+    .tree-title { color: var(--text); font-weight: 600; margin-bottom: 18px; }
+    .tree-line { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.9; }
+    html[dir="rtl"] .tree-line { direction: ltr; text-align: left; }
+    .tree-line .hot { color: var(--accent); }
+    .doc-groups { display: grid; gap: 14px; }
+    .doc-group { border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: rgba(255,255,255,.018); }
+    .doc-group-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 16px; align-items: center; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+    .doc-group-head h3 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+    .doc-group-head small { color: var(--muted); }
+    .doc-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .doc-link { min-height: 112px; padding: 19px 22px; border-bottom: 1px solid var(--line); border-inline-end: 1px solid var(--line); transition: background .25s ease; }
+    .doc-link:nth-child(even) { border-inline-end: 0; }
+    .doc-link:hover { background: var(--accent-soft); }
+    .doc-link strong { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; font-size: 15px; font-weight: 500; }
+    .doc-link strong::after { content: "↗"; color: var(--accent); }
+    .file-path { display: block; color: #697570; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; direction: ltr; text-align: left; overflow-wrap: anywhere; }
+    .language-pair { display: inline-flex; gap: 4px; }
+    .language-pair span { padding: 3px 7px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 10px; }
     .closing { min-height: 92svh; display: grid; align-items: center; text-align: center; }
     .closing h2 { max-width: 950px; margin: 0 auto 30px; font-size: clamp(47px, 7vw, 94px); line-height: 1; letter-spacing: -.065em; font-weight: 500; }
     html[dir="rtl"] .closing h2 { line-height: 1.22; }
@@ -166,7 +191,7 @@
       .hero { padding-top: 130px; }
       .hero-inner, .section-head, .case-grid { grid-template-columns: 1fr; gap: 36px; }
       .hero-aside { display: none; }
-      .chaos-grid, .stages, .deliverables, .system-map, .human-ai, .future-grid { grid-template-columns: 1fr; }
+      .chaos-grid, .stages, .deliverables, .system-map, .human-ai, .future-grid, .library-map, .doc-list { grid-template-columns: 1fr; }
       .chaos-card { transform: none; }
       .stage { border-inline-end: 0; border-bottom: 1px solid var(--line); }
       .stage:last-child { border-bottom: 0; }
@@ -176,6 +201,12 @@
       html[dir="rtl"] .arrow { transform: rotate(90deg); }
       .case-sticky { position: static; }
       .case-name { font-size: 78px; }
+      .library-intro { display: block; }
+      .library-intro .repo-link { margin-top: 24px; }
+      .tree { position: static; }
+      .doc-link { border-inline-end: 0; }
+      .doc-group-head { grid-template-columns: 42px 1fr; }
+      .doc-group-head .language-pair { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -190,6 +221,7 @@
     <div class="nav-actions">
       <a class="nav-link" href="#how" data-en="How it works" data-fa="چطور کار می‌کند">How it works</a>
       <a class="nav-link" href="#danika" data-en="First case" data-fa="نمونهٔ اول">First case</a>
+      <a class="nav-link" href="#library" data-en="Project files" data-fa="فایل‌های پروژه">Project files</a>
       <button class="lang" id="lang" type="button" aria-label="Switch language">FA</button>
     </div>
   </nav>
@@ -319,12 +351,102 @@
       </div>
     </section>
 
+    <section class="library" id="library">
+      <div class="wrap">
+        <div class="library-intro">
+          <div>
+            <div class="kicker" data-en="The complete body of work" data-fa="مجموعهٔ کامل کار">The complete body of work</div>
+            <h2 class="reveal" style="max-width:850px;margin:20px 0 0;font-size:clamp(42px,6vw,80px);line-height:1.05;letter-spacing:-.055em;font-weight:500" data-en="The idea is not hidden behind the website." data-fa="ایده پشت ظاهر وب‌سایت پنهان نشده است.">The idea is not hidden behind the website.</h2>
+          </div>
+          <a class="repo-link" href="https://github.com/axamir/neo-projects" target="_blank" rel="noreferrer" data-en="Open the complete repository" data-fa="مشاهدهٔ کامل ریپو">Open the complete repository</a>
+        </div>
+        <p class="section-copy reveal" data-en="Every important decision, assumption and next step has a traceable address. This library is the source-of-truth map for Lewis OS and its first living case, Danika." data-fa="هر تصمیم مهم، فرضیه و قدم بعدی یک آدرس قابل‌ردگیری دارد. این کتابخانه، نقشهٔ منبع اصلی Lewis OS و اولین نمونهٔ زندهٔ آن، Danika است.">Every important decision, assumption and next step has a traceable address. This library is the source-of-truth map for Lewis OS and its first living case, Danika.</p>
+
+        <div class="library-map">
+          <aside class="tree reveal" aria-label="Repository structure">
+            <div class="tree-title" data-en="Repository map" data-fa="نقشهٔ ریپو">Repository map</div>
+            <div class="tree-line">neo-projects/<br>├── README.md<br>└── projects/<br>&nbsp;&nbsp;&nbsp;└── <span class="hot">lewis-os/</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── MASTER_BLUEPRINT.md<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── docs/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├── en/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└── fa/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── products/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└── <span class="hot">danika/</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── website/</div>
+          </aside>
+
+          <div class="doc-groups">
+            <article class="doc-group reveal">
+              <header class="doc-group-head"><span class="number">00</span><div><h3 data-en="Orientation" data-fa="نقطهٔ ورود">Orientation</h3><small data-en="Begin here to understand the complete hierarchy." data-fa="برای فهم کل ساختار از اینجا شروع کنید.">Begin here to understand the complete hierarchy.</small></div><span class="language-pair"><span>EN</span><span>FA</span></span></header>
+              <div class="doc-list">
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/README.md"><strong data-en="Neo Projects — Overview" data-fa="معرفی Neo Projects">Neo Projects — Overview</strong><span class="file-path">/README.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/MASTER_BLUEPRINT.md"><strong data-en="Lewis OS — Master Blueprint" data-fa="بلوپرینت اصلی Lewis OS">Lewis OS — Master Blueprint</strong><span class="file-path">/projects/lewis-os/MASTER_BLUEPRINT.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/README.md"><strong data-en="Lewis OS — Overview" data-fa="معرفی Lewis OS">Lewis OS — Overview</strong><span class="file-path">/projects/lewis-os/README.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/tree/main/projects/lewis-os"><strong data-en="Open the Lewis OS directory" data-fa="مشاهدهٔ پوشهٔ Lewis OS">Open the Lewis OS directory</strong><span class="file-path">/projects/lewis-os/</span></a>
+              </div>
+            </article>
+
+            <article class="doc-group reveal">
+              <header class="doc-group-head"><span class="number">01</span><div><h3 data-en="Why it exists" data-fa="چرایی پروژه">Why it exists</h3><small data-en="The human problem, belief system and intended future." data-fa="مسئلهٔ انسانی، باورها و آیندهٔ موردنظر.">The human problem, belief system and intended future.</small></div><span class="language-pair"><span>EN</span><span>FA</span></span></header>
+              <div class="doc-list">
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/manifesto.md"><strong data-en="Manifesto" data-fa="مانیفست — انگلیسی">Manifesto</strong><span class="file-path">/docs/en/manifesto.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/manifesto.md"><strong data-en="Manifesto — Persian" data-fa="مانیفست — فارسی">Manifesto — Persian</strong><span class="file-path">/docs/fa/manifesto.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/problem.md"><strong data-en="The Problem" data-fa="مسئله — انگلیسی">The Problem</strong><span class="file-path">/docs/en/problem.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/problem.md"><strong data-en="The Problem — Persian" data-fa="مسئله — فارسی">The Problem — Persian</strong><span class="file-path">/docs/fa/problem.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/vision.md"><strong data-en="Vision" data-fa="چشم‌انداز — انگلیسی">Vision</strong><span class="file-path">/docs/en/vision.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/vision.md"><strong data-en="Vision — Persian" data-fa="چشم‌انداز — فارسی">Vision — Persian</strong><span class="file-path">/docs/fa/vision.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/principles.md"><strong data-en="Principles" data-fa="اصول — انگلیسی">Principles</strong><span class="file-path">/docs/en/principles.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/principles.md"><strong data-en="Principles — Persian" data-fa="اصول — فارسی">Principles — Persian</strong><span class="file-path">/docs/fa/principles.md</span></a>
+              </div>
+            </article>
+
+            <article class="doc-group reveal">
+              <header class="doc-group-head"><span class="number">02</span><div><h3 data-en="How the system works" data-fa="نحوهٔ کار سیستم">How the system works</h3><small data-en="Method, architecture, workflow and concrete services." data-fa="متد، معماری، جریان کار و خدمات مشخص.">Method, architecture, workflow and concrete services.</small></div><span class="language-pair"><span>EN</span><span>FA</span></span></header>
+              <div class="doc-list">
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/solution.md"><strong data-en="Solution" data-fa="راه‌حل — انگلیسی">Solution</strong><span class="file-path">/docs/en/solution.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/solution.md"><strong data-en="Solution — Persian" data-fa="راه‌حل — فارسی">Solution — Persian</strong><span class="file-path">/docs/fa/solution.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/architecture.md"><strong data-en="Architecture" data-fa="معماری — انگلیسی">Architecture</strong><span class="file-path">/docs/en/architecture.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/architecture.md"><strong data-en="Architecture — Persian" data-fa="معماری — فارسی">Architecture — Persian</strong><span class="file-path">/docs/fa/architecture.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/workflow.md"><strong data-en="Workflow" data-fa="جریان کار — انگلیسی">Workflow</strong><span class="file-path">/docs/en/workflow.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/workflow.md"><strong data-en="Workflow — Persian" data-fa="جریان کار — فارسی">Workflow — Persian</strong><span class="file-path">/docs/fa/workflow.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/services.md"><strong data-en="Services" data-fa="خدمات — انگلیسی">Services</strong><span class="file-path">/docs/en/services.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/services.md"><strong data-en="Services — Persian" data-fa="خدمات — فارسی">Services — Persian</strong><span class="file-path">/docs/fa/services.md</span></a>
+              </div>
+            </article>
+
+            <article class="doc-group reveal">
+              <header class="doc-group-head"><span class="number">03</span><div><h3 data-en="How value is created" data-fa="چگونگی خلق ارزش">How value is created</h3><small data-en="Business, pricing, funding, governance and scale." data-fa="کسب‌وکار، قیمت‌گذاری، سرمایه، حاکمیت و مقیاس.">Business, pricing, funding, governance and scale.</small></div><span class="language-pair"><span>EN</span><span>FA</span></span></header>
+              <div class="doc-list">
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/business-model.md"><strong data-en="Business Model" data-fa="مدل کسب‌وکار — انگلیسی">Business Model</strong><span class="file-path">/docs/en/business-model.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/business-model.md"><strong data-en="Business Model — Persian" data-fa="مدل کسب‌وکار — فارسی">Business Model — Persian</strong><span class="file-path">/docs/fa/business-model.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/pricing.md"><strong data-en="Pricing" data-fa="قیمت‌گذاری — انگلیسی">Pricing</strong><span class="file-path">/docs/en/pricing.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/pricing.md"><strong data-en="Pricing — Persian" data-fa="قیمت‌گذاری — فارسی">Pricing — Persian</strong><span class="file-path">/docs/fa/pricing.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/investment-model.md"><strong data-en="Investment Model" data-fa="مدل سرمایه‌گذاری — انگلیسی">Investment Model</strong><span class="file-path">/docs/en/investment-model.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/investment-model.md"><strong data-en="Investment Model — Persian" data-fa="مدل سرمایه‌گذاری — فارسی">Investment Model — Persian</strong><span class="file-path">/docs/fa/investment-model.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/governance.md"><strong data-en="Governance" data-fa="حاکمیت — انگلیسی">Governance</strong><span class="file-path">/docs/en/governance.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/governance.md"><strong data-en="Governance — Persian" data-fa="حاکمیت — فارسی">Governance — Persian</strong><span class="file-path">/docs/fa/governance.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/marketplace.md"><strong data-en="Marketplace" data-fa="مارکت‌پلیس — انگلیسی">Marketplace</strong><span class="file-path">/docs/en/marketplace.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/marketplace.md"><strong data-en="Marketplace — Persian" data-fa="مارکت‌پلیس — فارسی">Marketplace — Persian</strong><span class="file-path">/docs/fa/marketplace.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/en/roadmap.md"><strong data-en="Roadmap" data-fa="نقشهٔ راه — انگلیسی">Roadmap</strong><span class="file-path">/docs/en/roadmap.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/docs/fa/roadmap.md"><strong data-en="Roadmap — Persian" data-fa="نقشهٔ راه — فارسی">Roadmap — Persian</strong><span class="file-path">/docs/fa/roadmap.md</span></a>
+              </div>
+            </article>
+
+            <article class="doc-group reveal">
+              <header class="doc-group-head"><span class="number">04</span><div><h3>Danika — <span data-en="First living case" data-fa="اولین نمونهٔ زنده">First living case</span></h3><small data-en="The product vision and creator journey produced through Lewis OS." data-fa="چشم‌انداز محصول و مسیر خالق که با Lewis OS تولید شده است.">The product vision and creator journey produced through Lewis OS.</small></div><span class="language-pair"><span>EN</span><span>FA</span></span></header>
+              <div class="doc-list">
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/README.md"><strong data-en="Danika — Overview" data-fa="معرفی Danika">Danika — Overview</strong><span class="file-path">/products/danika/README.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/tree/main/projects/lewis-os/products/danika"><strong data-en="Open Danika directory" data-fa="مشاهدهٔ پوشهٔ Danika">Open Danika directory</strong><span class="file-path">/products/danika/</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/docs/en/product-vision.md"><strong data-en="Product Vision" data-fa="چشم‌انداز محصول — انگلیسی">Product Vision</strong><span class="file-path">/products/danika/docs/en/product-vision.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/docs/fa/product-vision.md"><strong data-en="Product Vision — Persian" data-fa="چشم‌انداز محصول — فارسی">Product Vision — Persian</strong><span class="file-path">/products/danika/docs/fa/product-vision.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/docs/en/creator-journey.md"><strong data-en="Creator Journey" data-fa="مسیر خالق — انگلیسی">Creator Journey</strong><span class="file-path">/products/danika/docs/en/creator-journey.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/docs/fa/creator-journey.md"><strong data-en="Creator Journey — Persian" data-fa="مسیر خالق — فارسی">Creator Journey — Persian</strong><span class="file-path">/products/danika/docs/fa/creator-journey.md</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="closing">
       <div class="wrap">
         <div class="kicker reveal" data-en="The first credible next step" data-fa="اولین قدم بعدی معتبر">The first credible next step</div>
         <h2 class="reveal" data-en="An idea becomes valuable when others can finally see it." data-fa="یک ایده زمانی ارزشمند می‌شود که دیگران بالاخره بتوانند آن را ببینند.">An idea becomes valuable when others can finally see it.</h2>
         <p class="reveal" data-en="Lewis OS creates the clarity, architecture and evidence required to move from imagination toward execution — without taking the idea away from the person who owns it." data-fa="Lewis OS وضوح، معماری و شواهد لازم برای حرکت از تخیل به اجرا را می‌سازد؛ بدون آن‌که ایده را از صاحب آن بگیرد.">Lewis OS creates the clarity, architecture and evidence required to move from imagination toward execution — without taking the idea away from the person who owns it.</p>
-        <a class="cta reveal" href="../README.md" data-en="Review the project foundation" data-fa="زیربنای پروژه را ببینید">Review the project foundation</a>
+        <a class="cta reveal" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/MASTER_BLUEPRINT.md" target="_blank" rel="noreferrer" data-en="Review the master blueprint" data-fa="بلوپرینت اصلی را ببینید">Review the master blueprint</a>
       </div>
     </section>
   </main>
