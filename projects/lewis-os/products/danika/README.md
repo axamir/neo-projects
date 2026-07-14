@@ -1,6 +1,6 @@
 # Danika
 
-> The first living product of Lewis OS.
+> The first living case and product proposal prepared through Lewis OS.
 
 Danika is a proposed creator and venture-development platform designed to help people transform an early idea into a structured, build-ready, and presentation-ready project.
 
@@ -34,22 +34,23 @@ A user may eventually be able to:
 
 ## Relationship to Lewis OS
 
-Lewis OS defines the method.
+Lewis OS defines and tests the preparation method.
 
-Danika delivers the experience.
+The Danika proposal explores how that method could become a human-guided, AI-assisted experience. This direction remains subject to Danika Lewis's review.
 
 ## Current Status
 
-The project currently includes:
+The public repository currently includes:
 
-- product architecture
-- creator journey
-- state-machine design
-- onboarding structure
-- a working local runtime
-- autosave and validation
-- multilingual foundations
-- an initial roadmap
+- an initial bilingual product vision
+- a proposed creator journey
+- Lewis OS governance and ownership principles
+- a phased roadmap
+- a bilingual public presentation
+- a Phase One handover
+- a structured review questionnaire
+
+Any prototype, local runtime, implementation detail, or prior technical experiment must be reviewed and transferred separately before it is treated as part of the approved project record.
 
 ## Important Note
 
@@ -61,9 +62,11 @@ No ownership, public role, partnership, or formal association with Danika Lewis 
 
 After review:
 
-1. validate the vision
-2. clarify roles and ownership
-3. agree on the official repository
-4. transfer the approved knowledge
-5. build the production version
-6. launch the first private pilot
+1. record what is confirmed, corrected, private, or rejected
+2. clarify identity, roles, ownership, and consent
+3. select the smallest credible use case
+4. agree on the official source of truth
+5. define a manual pilot or prototype
+6. estimate cost and responsibility from the approved scope
+
+Start with the [Phase One Review Questions](DANIKA_REVIEW_QUESTIONS.md).

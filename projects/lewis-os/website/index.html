@@ -175,6 +175,22 @@
     .file-path { display: block; color: #697570; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; direction: ltr; text-align: left; overflow-wrap: anywhere; }
     .language-pair { display: inline-flex; gap: 4px; }
     .language-pair span { padding: 3px 7px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 10px; }
+    .handover { background: var(--accent); color: #07100c; }
+    .handover .kicker { color: #245d45; }
+    .handover-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: start; }
+    .phase-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; padding: 9px 13px; border: 1px solid rgba(7,16,12,.2); border-radius: 999px; font-size: 12px; font-weight: 600; }
+    .phase-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #07100c; }
+    .handover h2 { margin: 18px 0 28px; font-size: clamp(48px,7vw,92px); line-height: .98; letter-spacing: -.065em; font-weight: 500; }
+    html[dir="rtl"] .handover h2 { line-height: 1.18; }
+    .handover-copy { font-size: 20px; color: #355044; }
+    .handover-copy strong { color: #07100c; }
+    .handover-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .handover-action { display: inline-flex; align-items: center; gap: 9px; padding: 13px 18px; border: 1px solid rgba(7,16,12,.22); border-radius: 999px; font-weight: 600; }
+    .handover-action.primary { background: #07100c; color: var(--accent); border-color: #07100c; }
+    .handover-action::after { content: "↗"; }
+    .review-list { counter-reset: review; margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(7,16,12,.18); }
+    .review-list li { counter-increment: review; display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 21px 0; border-bottom: 1px solid rgba(7,16,12,.18); }
+    .review-list li::before { content: "0" counter(review); color: #426252; font-size: 12px; padding-top: 4px; }
     .closing { min-height: 92svh; display: grid; align-items: center; text-align: center; }
     .closing h2 { max-width: 950px; margin: 0 auto 30px; font-size: clamp(47px, 7vw, 94px); line-height: 1; letter-spacing: -.065em; font-weight: 500; }
     html[dir="rtl"] .closing h2 { line-height: 1.22; }
@@ -191,7 +207,7 @@
       .hero { padding-top: 130px; }
       .hero-inner, .section-head, .case-grid { grid-template-columns: 1fr; gap: 36px; }
       .hero-aside { display: none; }
-      .chaos-grid, .stages, .deliverables, .system-map, .human-ai, .future-grid, .library-map, .doc-list { grid-template-columns: 1fr; }
+      .chaos-grid, .stages, .deliverables, .system-map, .human-ai, .future-grid, .library-map, .doc-list, .handover-grid { grid-template-columns: 1fr; }
       .chaos-card { transform: none; }
       .stage { border-inline-end: 0; border-bottom: 1px solid var(--line); }
       .stage:last-child { border-bottom: 0; }
@@ -222,6 +238,7 @@
       <a class="nav-link" href="#how" data-en="How it works" data-fa="چطور کار می‌کند">How it works</a>
       <a class="nav-link" href="#danika" data-en="First case" data-fa="نمونهٔ اول">First case</a>
       <a class="nav-link" href="#library" data-en="Project files" data-fa="فایل‌های پروژه">Project files</a>
+      <a class="nav-link" href="#review" data-en="Phase One review" data-fa="بازبینی فاز اول">Phase One review</a>
       <button class="lang" id="lang" type="button" aria-label="Switch language">FA</button>
     </div>
   </nav>
@@ -376,6 +393,8 @@
                 <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/MASTER_BLUEPRINT.md"><strong data-en="Lewis OS — Master Blueprint" data-fa="بلوپرینت اصلی Lewis OS">Lewis OS — Master Blueprint</strong><span class="file-path">/projects/lewis-os/MASTER_BLUEPRINT.md</span></a>
                 <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/README.md"><strong data-en="Lewis OS — Overview" data-fa="معرفی Lewis OS">Lewis OS — Overview</strong><span class="file-path">/projects/lewis-os/README.md</span></a>
                 <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/tree/main/projects/lewis-os"><strong data-en="Open the Lewis OS directory" data-fa="مشاهدهٔ پوشهٔ Lewis OS">Open the Lewis OS directory</strong><span class="file-path">/projects/lewis-os/</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/PHASE_ONE_HANDOVER.md"><strong data-en="Phase One Handover" data-fa="تحویل رسمی فاز اول">Phase One Handover</strong><span class="file-path">/projects/lewis-os/PHASE_ONE_HANDOVER.md</span></a>
+                <a class="doc-link" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/DANIKA_REVIEW_QUESTIONS.md"><strong data-en="Danika Review Questions" data-fa="پرسش‌های بازبینی دانیکا">Danika Review Questions</strong><span class="file-path">/products/danika/DANIKA_REVIEW_QUESTIONS.md</span></a>
               </div>
             </article>
 
@@ -437,6 +456,31 @@
               </div>
             </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="handover" id="review">
+      <div class="wrap handover-grid">
+        <div>
+          <div class="kicker" data-en="Ready for Danika's review" data-fa="آمادهٔ بازبینی دانیکا">Ready for Danika's review</div>
+          <div class="phase-badge" data-en="Phase One · Complete" data-fa="فاز اول · تکمیل شده">Phase One · Complete</div>
+          <h2 class="reveal" data-en="The idea is visible. Now it must become truthful." data-fa="ایده اکنون دیده می‌شود؛ حالا باید واقعی‌تر شود.">The idea is visible. Now it must become truthful.</h2>
+          <p class="handover-copy reveal" data-en="Phase One has prepared the architecture, documentation and first presentation. It has not made decisions for Danika. The next step is direct review: confirm what is true, correct what is not, protect what is private and decide whether this direction deserves a Phase Two." data-fa="فاز اول معماری، مستندات و اولین ارائه را آماده کرده است؛ اما به‌جای دانیکا تصمیم نگرفته. قدم بعدی بازبینی مستقیم است: تأیید واقعیت‌ها، اصلاح برداشت‌های نادرست، حفاظت از موارد خصوصی و تصمیم دربارهٔ ارزش ادامهٔ مسیر در فاز دوم.">Phase One has prepared the architecture, documentation and first presentation. It has not made decisions for Danika. The next step is direct review: confirm what is true, correct what is not, protect what is private and decide whether this direction deserves a Phase Two.</p>
+          <div class="handover-actions reveal">
+            <a class="handover-action primary" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/products/danika/DANIKA_REVIEW_QUESTIONS.md" data-en="Open the review questions" data-fa="پرسش‌های بازبینی را ببینید">Open the review questions</a>
+            <a class="handover-action" target="_blank" rel="noreferrer" href="https://github.com/axamir/neo-projects/blob/main/projects/lewis-os/PHASE_ONE_HANDOVER.md" data-en="Read the handover" data-fa="تحویل فاز اول را بخوانید">Read the handover</a>
+          </div>
+        </div>
+        <div>
+          <p class="handover-copy"><strong data-en="The first response can be simple:" data-fa="پاسخ اولیه می‌تواند ساده باشد:">The first response can be simple:</strong></p>
+          <ol class="review-list">
+            <li data-en="What feels most accurate?" data-fa="کدام بخش از همه دقیق‌تر است؟">What feels most accurate?</li>
+            <li data-en="What feels least accurate?" data-fa="کدام بخش کمترین تطابق را دارد؟">What feels least accurate?</li>
+            <li data-en="What feels exciting?" data-fa="کدام بخش هیجان‌انگیز است؟">What feels exciting?</li>
+            <li data-en="What feels uncomfortable or unclear?" data-fa="کدام بخش ناراحت‌کننده یا نامشخص است؟">What feels uncomfortable or unclear?</li>
+            <li data-en="Should we explore Phase Two together?" data-fa="آیا فاز دوم را با هم بررسی کنیم؟">Should we explore Phase Two together?</li>
+          </ol>
         </div>
       </div>
     </section>
