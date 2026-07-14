@@ -1,174 +1,365 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lewis OS — Danika</title>
-  <meta name="description" content="Lewis OS transforms ideas into build-ready ventures. Danika is its first living product.">
+  <meta name="theme-color" content="#080a0c">
+  <meta name="description" content="Lewis OS transforms raw ideas into clear, engineered and presentation-ready ventures. Danika is the first living proof.">
+  <title>Lewis OS — From idea to a credible next step</title>
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f7f5;
-      --surface: rgba(255,255,255,.72);
-      --text: #111318;
-      --muted: #656b75;
-      --border: rgba(17,19,24,.12);
-      --button: #111318;
-      --button-text: #fff;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600&display=swap');
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #090b0f;
-        --surface: rgba(18,21,27,.82);
-        --text: #f5f7fa;
-        --muted: #98a2b1;
-        --border: rgba(255,255,255,.12);
-        --button: #f5f7fa;
-        --button-text: #090b0f;
-      }
+    :root {
+      color-scheme: dark;
+      --bg: #080a0c;
+      --bg-soft: #0d1114;
+      --surface: rgba(255,255,255,.045);
+      --surface-strong: rgba(255,255,255,.075);
+      --text: #f2f5f3;
+      --muted: #919b98;
+      --line: rgba(255,255,255,.11);
+      --accent: #9df8cd;
+      --accent-soft: rgba(157,248,205,.12);
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; background: var(--bg); }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 70% 8%, rgba(59,125,101,.16), transparent 31rem),
+        var(--bg);
       color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    main {
-      width: min(960px, calc(100% - 40px));
-      margin: auto;
-      padding: 96px 0;
+    html[dir="rtl"] body { font-family: Vazirmatn, Inter, sans-serif; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
     }
-
-    .eyebrow {
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 850px;
-      margin: 18px 0;
-      font-size: clamp(48px, 9vw, 100px);
-      line-height: .96;
-      letter-spacing: -.055em;
-    }
-
-    .lead {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 21px;
-      line-height: 1.65;
-    }
-
-    .actions {
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .nav {
+      position: fixed;
+      inset: 18px 0 auto;
+      z-index: 20;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .button {
-      padding: 13px 18px;
-      border: 1px solid var(--border);
+      align-items: center;
+      justify-content: space-between;
+      width: min(var(--max), calc(100% - 32px));
+      margin: auto;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid var(--line);
       border-radius: 999px;
+      background: rgba(8,10,12,.7);
+      backdrop-filter: blur(18px);
     }
-
-    .primary {
-      background: var(--button);
-      color: var(--button-text);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 90px;
-    }
-
-    .card {
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
+    html[dir="rtl"] .nav { padding: 10px 18px 10px 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.02em; }
+    .brand-mark { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 24px var(--accent); }
+    .nav-actions { display: flex; align-items: center; gap: 7px; }
+    .lang {
+      border: 1px solid var(--line);
+      color: var(--text);
       background: var(--surface);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
     }
-
-    .price {
-      margin-top: 30px;
-      font-size: 28px;
-      font-weight: 700;
+    .nav-link { color: var(--muted); padding: 7px 10px; font-size: 13px; }
+    .progress { position: fixed; z-index: 30; inset: 0 auto auto 0; height: 2px; width: 0; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    section { position: relative; padding: 120px 0; }
+    .hero { min-height: 100svh; display: grid; place-items: center; padding-top: 140px; }
+    .hero-inner { display: grid; grid-template-columns: 1.25fr .75fr; gap: 70px; align-items: end; }
+    .kicker { color: var(--accent); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+    html[dir="rtl"] .kicker { letter-spacing: 0; }
+    h1 { margin: 24px 0 30px; max-width: 870px; font-size: clamp(58px, 8.7vw, 126px); line-height: .88; letter-spacing: -.07em; font-weight: 500; }
+    html[dir="rtl"] h1 { font-size: clamp(50px, 7.8vw, 105px); line-height: 1.03; letter-spacing: -.055em; }
+    .hero-copy { color: var(--muted); font-size: clamp(18px, 2vw, 23px); max-width: 540px; margin: 0 0 24px; }
+    .hero-aside { border-inline-start: 1px solid var(--line); padding-inline-start: 28px; color: var(--muted); }
+    .hero-aside strong { display: block; color: var(--text); font-size: 22px; margin-bottom: 7px; }
+    .scroll-cue { display: flex; align-items: center; gap: 10px; margin-top: 48px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+    .scroll-line { width: 54px; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); }
+    html[dir="rtl"] .scroll-line { background: linear-gradient(-90deg, var(--accent), transparent); }
+    .statement { min-height: 85svh; display: grid; align-items: center; }
+    .statement h2 { max-width: 1040px; margin: 0; font-size: clamp(40px, 6vw, 82px); line-height: 1.06; letter-spacing: -.055em; font-weight: 500; }
+    html[dir="rtl"] .statement h2 { line-height: 1.25; }
+    .statement h2 span { color: var(--muted); }
+    .section-head { display: grid; grid-template-columns: .65fr 1.35fr; gap: 60px; margin-bottom: 70px; }
+    .section-head h2 { margin: 0; max-width: 740px; font-size: clamp(38px, 5vw, 72px); line-height: 1.05; letter-spacing: -.055em; font-weight: 500; }
+    html[dir="rtl"] .section-head h2 { line-height: 1.22; }
+    .section-copy { max-width: 650px; color: var(--muted); font-size: 18px; }
+    .section-copy strong { color: var(--text); font-weight: 500; }
+    .chaos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .chaos-card, .output-card, .service-card {
+      min-height: 230px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--surface-strong), rgba(255,255,255,.015));
     }
+    .chaos-card { transform: rotate(var(--r)); }
+    .number { color: var(--accent); font-size: 12px; letter-spacing: .12em; }
+    .card-title { margin: 54px 0 9px; font-size: 23px; letter-spacing: -.03em; }
+    .card-copy { color: var(--muted); margin: 0; }
+    .bridge { overflow: hidden; background: var(--bg-soft); border-block: 1px solid var(--line); }
+    .path { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 18px; align-items: center; }
+    .path-node { min-height: 170px; display: grid; place-items: center; text-align: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); padding: 20px; }
+    .path-node.active { border-color: rgba(157,248,205,.4); background: var(--accent-soft); box-shadow: inset 0 0 50px rgba(157,248,205,.035); }
+    .arrow { color: var(--muted); }
+    html[dir="rtl"] .arrow { transform: rotate(180deg); }
+    .stages { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+    .stage { padding: 38px 30px 44px; border-inline-end: 1px solid var(--line); }
+    .stage:last-child { border-inline-end: 0; }
+    .stage h3 { margin: 60px 0 10px; font-size: 34px; letter-spacing: -.04em; }
+    .stage ul { list-style: none; padding: 22px 0 0; margin: 24px 0 0; border-top: 1px solid var(--line); color: var(--muted); }
+    .stage li { margin: 7px 0; }
+    .deliverables { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .output-card { min-height: 180px; }
+    .output-card .card-title { margin-top: 45px; font-size: 19px; }
+    .case { background: #dfe8e2; color: #101613; }
+    .case .kicker { color: #286047; }
+    .case .section-copy, .case .muted { color: #56625c; }
+    .case .section-copy strong { color: #101613; }
+    .case-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .case-sticky { position: sticky; top: 130px; }
+    .case-name { margin: 20px 0; font-size: clamp(70px, 10vw, 138px); line-height: .9; letter-spacing: -.075em; font-weight: 500; }
+    .case-step { padding: 32px 0; border-top: 1px solid rgba(16,22,19,.16); display: grid; grid-template-columns: 55px 1fr; gap: 18px; }
+    .case-step h3 { margin: 0 0 8px; font-size: 25px; }
+    .case-step p { margin: 0; color: #56625c; }
+    .system-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .system-card { padding: 25px; min-height: 210px; border: 1px solid var(--line); border-radius: 22px; }
+    .system-card strong { display: block; margin-top: 60px; font-size: 22px; }
+    .system-card small { color: var(--muted); }
+    .human-ai { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .role { border: 1px solid var(--line); border-radius: 26px; padding: 34px; min-height: 360px; }
+    .role.ai { background: var(--accent-soft); }
+    .role h3 { margin: 60px 0 20px; font-size: 34px; }
+    .role ul { padding-inline-start: 20px; color: var(--muted); }
+    .role li { margin: 8px 0; }
+    .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .service-card { min-height: 260px; }
+    .service-card h3 { margin: 70px 0 10px; font-size: 27px; }
+    .closing { min-height: 92svh; display: grid; align-items: center; text-align: center; }
+    .closing h2 { max-width: 950px; margin: 0 auto 30px; font-size: clamp(47px, 7vw, 94px); line-height: 1; letter-spacing: -.065em; font-weight: 500; }
+    html[dir="rtl"] .closing h2 { line-height: 1.22; }
+    .closing p { max-width: 650px; margin: auto; color: var(--muted); font-size: 19px; }
+    .cta { display: inline-flex; margin-top: 38px; padding: 14px 22px; border-radius: 999px; background: var(--accent); color: #07100c; font-weight: 600; }
+    footer { padding: 35px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    .danika {
-      margin-top: 90px;
-      padding-top: 50px;
-      border-top: 1px solid var(--border);
+    @media (max-width: 800px) {
+      .nav-link { display: none; }
+      section { padding: 88px 0; }
+      .hero { padding-top: 130px; }
+      .hero-inner, .section-head, .case-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-aside { display: none; }
+      .chaos-grid, .stages, .deliverables, .system-map, .human-ai, .future-grid { grid-template-columns: 1fr; }
+      .chaos-card { transform: none; }
+      .stage { border-inline-end: 0; border-bottom: 1px solid var(--line); }
+      .stage:last-child { border-bottom: 0; }
+      .path { grid-template-columns: 1fr; }
+      .path-node { min-height: 120px; border-radius: 80px; }
+      .arrow { transform: rotate(90deg); text-align: center; }
+      html[dir="rtl"] .arrow { transform: rotate(90deg); }
+      .case-sticky { position: static; }
+      .case-name { font-size: 78px; }
     }
-
-    @media (max-width: 720px) {
-      main { padding: 64px 0; }
-      .grid { grid-template-columns: 1fr; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <span class="eyebrow">Lewis OS · Powered by neoOS</span>
-
-    <h1>Turn one idea into a venture.</h1>
-
-    <p class="lead">
-      Lewis OS transforms unfinished ideas into structured,
-      build-ready and presentation-ready projects.
-      Danika is its first living product.
-    </p>
-
-    <div class="actions">
-      <a class="button primary" href="#danika">Explore Danika</a>
-      <a class="button" href="../README.md">Read the blueprint</a>
+  <div class="progress" id="progress"></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top"><span class="brand-mark"></span>Lewis OS</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="#how" data-en="How it works" data-fa="چطور کار می‌کند">How it works</a>
+      <a class="nav-link" href="#danika" data-en="First case" data-fa="نمونهٔ اول">First case</a>
+      <button class="lang" id="lang" type="button" aria-label="Switch language">FA</button>
     </div>
+  </nav>
 
-    <section class="grid">
-      <article class="card">
-        <span class="eyebrow">01</span>
-        <h2>Discover</h2>
-        <p>Transform the initial idea into clarity.</p>
-        <div class="price">$96.3</div>
-      </article>
-
-      <article class="card">
-        <span class="eyebrow">02</span>
-        <h2>Define</h2>
-        <p>Transform clarity into a build-ready project.</p>
-        <div class="price">$96.3</div>
-      </article>
-
-      <article class="card">
-        <span class="eyebrow">03</span>
-        <h2>Present</h2>
-        <p>Prepare the project for builders, partners and investors.</p>
-        <div class="price">$96.3</div>
-      </article>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="kicker reveal" data-en="Venture preparation studio" data-fa="استودیوی آماده‌سازی ایده‌ها">Venture preparation studio</div>
+          <h1 class="reveal" data-en="An idea deserves a credible next step." data-fa="هر ایده، شایستهٔ یک قدم بعدی معتبر است.">An idea deserves a credible next step.</h1>
+          <p class="hero-copy reveal" data-en="Lewis OS turns raw ideas into clear, engineered and presentation-ready ventures — through human coaching, AI collaboration and a disciplined process." data-fa="Lewis OS ایده‌های خام را با کوچینگ انسانی، همکاری هوش مصنوعی و یک فرآیند منظم، به پروژه‌هایی روشن، مهندسی‌شده و آمادهٔ ارائه تبدیل می‌کند.">Lewis OS turns raw ideas into clear, engineered and presentation-ready ventures — through human coaching, AI collaboration and a disciplined process.</p>
+          <div class="scroll-cue"><span class="scroll-line"></span><span data-en="Follow the journey" data-fa="مسیر را دنبال کنید">Follow the journey</span></div>
+        </div>
+        <aside class="hero-aside reveal">
+          <strong data-en="From zero to one." data-fa="از صفر تا یک.">From zero to one.</strong>
+          <span data-en="Not another AI chat. A guided path from imagination to an asset people can understand, evaluate, build or fund." data-fa="نه یک گفت‌وگوی دیگر با هوش مصنوعی؛ بلکه مسیری هدایت‌شده از تخیل تا یک دارایی که دیگران بتوانند آن را بفهمند، ارزیابی کنند، بسازند یا روی آن سرمایه‌گذاری کنند.">Not another AI chat. A guided path from imagination to an asset people can understand, evaluate, build or fund.</span>
+        </aside>
+      </div>
     </section>
 
-    <section class="danika" id="danika">
-      <span class="eyebrow">First Product</span>
-      <h2>Danika</h2>
-      <p class="lead">
-        A guided system for transforming ideas into structured ventures,
-        while preserving human judgment, ownership and clarity.
-      </p>
+    <section class="statement">
+      <div class="wrap">
+        <h2 class="reveal"><span data-en="Most ideas do not fail in development. " data-fa="بیشتر ایده‌ها هنگام ساخت شکست نمی‌خورند؛ ">Most ideas do not fail in development. </span><span data-en="They disappear before they become understandable." data-fa="پیش از آن‌که قابل‌فهم شوند، از بین می‌روند.">They disappear before they become understandable.</span></h2>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker" data-en="The hidden cost" data-fa="هزینهٔ پنهان">The hidden cost</div>
+          <div>
+            <h2 class="reveal" data-en="A good idea, trapped in an unfinished form." data-fa="یک ایدهٔ خوب، گرفتار در شکلی ناتمام.">A good idea, trapped in an unfinished form.</h2>
+            <p class="section-copy reveal" data-en="Without structure, people spend months researching, restarting, hiring too early or generating more material without gaining clarity. Time, money, confidence and creative momentum are lost." data-fa="بدون ساختار، آدم‌ها ماه‌ها تحقیق می‌کنند، از نو شروع می‌کنند، زودتر از موعد نیرو می‌گیرند یا بدون رسیدن به وضوح، محتوای بیشتری تولید می‌کنند. نتیجه، از دست رفتن زمان، پول، اعتماد و نیروی خلاقه است.">Without structure, people spend months researching, restarting, hiring too early or generating more material without gaining clarity. Time, money, confidence and creative momentum are lost.</p>
+          </div>
+        </div>
+        <div class="chaos-grid">
+          <article class="chaos-card reveal" style="--r:-1.2deg"><span class="number">01</span><h3 class="card-title" data-en="Scattered thinking" data-fa="فکرهای پراکنده">Scattered thinking</h3><p class="card-copy" data-en="Notes, conversations and half-formed decisions with no single source of truth." data-fa="یادداشت‌ها، گفت‌وگوها و تصمیم‌های نیمه‌کاره بدون یک مرجع مشخص.">Notes, conversations and half-formed decisions with no single source of truth.</p></article>
+          <article class="chaos-card reveal" style="--r:.8deg"><span class="number">02</span><h3 class="card-title" data-en="Generic AI output" data-fa="خروجی عمومی هوش مصنوعی">Generic AI output</h3><p class="card-copy" data-en="More words, but no continuity, ownership, validation or architecture." data-fa="کلمات بیشتر، اما بدون تداوم، مالکیت، اعتبارسنجی یا معماری.">More words, but no continuity, ownership, validation or architecture.</p></article>
+          <article class="chaos-card reveal" style="--r:-.5deg"><span class="number">03</span><h3 class="card-title" data-en="Expensive uncertainty" data-fa="ابهام پرهزینه">Expensive uncertainty</h3><p class="card-copy" data-en="Builders cannot estimate it. Partners cannot understand it. Investors cannot evaluate it." data-fa="سازنده نمی‌تواند برآوردش کند، شریک نمی‌تواند آن را بفهمد و سرمایه‌گذار نمی‌تواند ارزیابی‌اش کند.">Builders cannot estimate it. Partners cannot understand it. Investors cannot evaluate it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bridge">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="The missing layer" data-fa="حلقهٔ گمشده">The missing layer</div><div><h2 class="reveal" data-en="Lewis OS prepares ideas to be built." data-fa="Lewis OS ایده‌ها را برای ساخته‌شدن آماده می‌کند.">Lewis OS prepares ideas to be built.</h2><p class="section-copy reveal" data-en="We work with the person behind the idea. Through online sessions, workshops, coaching and AI-assisted exploration, we turn intuition into shared understanding — and shared understanding into an executable project." data-fa="ما با خودِ صاحب ایده کار می‌کنیم. با جلسات آنلاین، ورکشاپ، کوچینگ و بررسی به کمک هوش مصنوعی، شهود را به فهم مشترک و فهم مشترک را به پروژه‌ای قابل‌اجرا تبدیل می‌کنیم.">We work with the person behind the idea. Through online sessions, workshops, coaching and AI-assisted exploration, we turn intuition into shared understanding — and shared understanding into an executable project.</p></div></div>
+        <div class="path reveal">
+          <div class="path-node"><span data-en="Raw idea" data-fa="ایدهٔ خام">Raw idea</span></div><div class="arrow">→</div>
+          <div class="path-node active"><span data-en="Guided clarity" data-fa="شفاف‌سازی هدایت‌شده">Guided clarity</span></div><div class="arrow">→</div>
+          <div class="path-node active"><span data-en="Engineered venture" data-fa="پروژهٔ مهندسی‌شده">Engineered venture</span></div><div class="arrow">→</div>
+          <div class="path-node"><span data-en="Credible decision" data-fa="تصمیم معتبر">Credible decision</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="One disciplined journey" data-fa="یک مسیر منظم">One disciplined journey</div><div><h2 class="reveal" data-en="Discover. Define. Present." data-fa="کشف. تعریف. ارائه.">Discover. Define. Present.</h2><p class="section-copy reveal" data-en="Each stage reduces uncertainty and ends with something independently useful. The client can continue, pause or change direction with clearer evidence." data-fa="هر مرحله، ابهام را کمتر می‌کند و با یک خروجی مستقل و کاربردی پایان می‌یابد. مشتری می‌تواند با شواهد روشن‌تر ادامه دهد، متوقف شود یا مسیر را تغییر دهد.">Each stage reduces uncertainty and ends with something independently useful. The client can continue, pause or change direction with clearer evidence.</p></div></div>
+        <div class="stages">
+          <article class="stage reveal"><span class="number">01 — DISCOVER</span><h3 data-en="Idea → Clarity" data-fa="ایده ← وضوح">Idea → Clarity</h3><p class="card-copy" data-en="Understand the person, problem, audience, purpose, assumptions and opportunity." data-fa="شناخت فرد، مسئله، مخاطب، هدف، فرضیات و فرصت.">Understand the person, problem, audience, purpose, assumptions and opportunity.</p><ul><li data-en="Problem definition" data-fa="تعریف مسئله">Problem definition</li><li data-en="Audience &amp; opportunity" data-fa="مخاطب و فرصت">Audience &amp; opportunity</li><li data-en="Risks &amp; key questions" data-fa="ریسک‌ها و پرسش‌های کلیدی">Risks &amp; key questions</li></ul></article>
+          <article class="stage reveal"><span class="number">02 — DEFINE</span><h3 data-en="Clarity → Structure" data-fa="وضوح ← ساختار">Clarity → Structure</h3><p class="card-copy" data-en="Shape the idea into a coherent product, business and technical architecture." data-fa="تبدیل ایده به یک معماری منسجم محصول، کسب‌وکار و فنی.">Shape the idea into a coherent product, business and technical architecture.</p><ul><li data-en="Product blueprint" data-fa="بلوپرینت محصول">Product blueprint</li><li data-en="Business model" data-fa="مدل کسب‌وکار">Business model</li><li data-en="Roadmap &amp; repository" data-fa="نقشهٔ راه و مخزن پروژه">Roadmap &amp; repository</li></ul></article>
+          <article class="stage reveal"><span class="number">03 — PRESENT</span><h3 data-en="Structure → Value" data-fa="ساختار ← ارزش">Structure → Value</h3><p class="card-copy" data-en="Make the venture understandable and credible to builders, partners, buyers or investors." data-fa="قابل‌فهم و معتبر کردن پروژه برای سازندگان، شرکا، خریداران یا سرمایه‌گذاران.">Make the venture understandable and credible to builders, partners, buyers or investors.</p><ul><li data-en="Whitepaper &amp; brief" data-fa="وایت‌پیپر و بریف">Whitepaper &amp; brief</li><li data-en="Budget scenarios" data-fa="سناریوهای بودجه">Budget scenarios</li><li data-en="Landing &amp; presentation" data-fa="لندینگ و ارائه">Landing &amp; presentation</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="Tangible outcomes" data-fa="خروجی‌های ملموس">Tangible outcomes</div><div><h2 class="reveal" data-en="Not advice that disappears after a call." data-fa="نه توصیه‌ای که بعد از تماس فراموش شود.">Not advice that disappears after a call.</h2><p class="section-copy reveal" data-en="The work becomes a durable project package: understandable today, transferable tomorrow and ready for its next decision." data-fa="نتیجه به یک بستهٔ ماندگار پروژه تبدیل می‌شود: امروز قابل‌فهم، فردا قابل‌انتقال و آماده برای تصمیم بعدی.">The work becomes a durable project package: understandable today, transferable tomorrow and ready for its next decision.</p></div></div>
+        <div class="deliverables">
+          <article class="output-card reveal"><span class="number">A</span><h3 class="card-title" data-en="Vision &amp; problem" data-fa="چشم‌انداز و مسئله">Vision &amp; problem</h3></article>
+          <article class="output-card reveal"><span class="number">B</span><h3 class="card-title" data-en="Whitepaper &amp; brief" data-fa="وایت‌پیپر و بریف">Whitepaper &amp; brief</h3></article>
+          <article class="output-card reveal"><span class="number">C</span><h3 class="card-title" data-en="Business model" data-fa="مدل کسب‌وکار">Business model</h3></article>
+          <article class="output-card reveal"><span class="number">D</span><h3 class="card-title" data-en="Product architecture" data-fa="معماری محصول">Product architecture</h3></article>
+          <article class="output-card reveal"><span class="number">E</span><h3 class="card-title" data-en="Roadmap" data-fa="نقشهٔ راه">Roadmap</h3></article>
+          <article class="output-card reveal"><span class="number">F</span><h3 class="card-title" data-en="Cost scenarios" data-fa="سناریوهای هزینه">Cost scenarios</h3></article>
+          <article class="output-card reveal"><span class="number">G</span><h3 class="card-title" data-en="Project repository" data-fa="مخزن پروژه">Project repository</h3></article>
+          <article class="output-card reveal"><span class="number">H</span><h3 class="card-title" data-en="Website &amp; pitch" data-fa="وب‌سایت و ارائه">Website &amp; pitch</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case" id="danika">
+      <div class="wrap case-grid">
+        <div class="case-sticky"><div class="kicker" data-en="First living proof" data-fa="اولین نمونهٔ زنده">First living proof</div><h2 class="case-name">Danika</h2><p class="section-copy" data-en="Danika Lewis began with professional knowledge, a desire to coach people and an early idea. Lewis OS turned that starting point into a structured product vision and venture proposal." data-fa="دانیکا لوییس با دانش تخصصی، تمایل به کوچ کردن آدم‌ها و یک ایدهٔ اولیه شروع کرد. Lewis OS این نقطهٔ آغاز را به چشم‌انداز یک محصول و پیشنهاد پروژه‌ای ساختاریافته تبدیل کرد.">Danika Lewis began with professional knowledge, a desire to coach people and an early idea. Lewis OS turned that starting point into a structured product vision and venture proposal.</p></div>
+        <div>
+          <div class="case-step reveal"><span>01</span><div><h3 data-en="The starting point" data-fa="نقطهٔ شروع">The starting point</h3><p data-en="A specialist wanted to guide people across different areas, but the idea did not yet have a complete product form." data-fa="یک متخصص می‌خواست در حوزه‌های مختلف آدم‌ها را هدایت کند، اما ایده هنوز فرم کامل یک محصول را نداشت.">A specialist wanted to guide people across different areas, but the idea did not yet have a complete product form.</p></div></div>
+          <div class="case-step reveal"><span>02</span><div><h3 data-en="The exploration" data-fa="کاوش">The exploration</h3><p data-en="We examined the creator journey, human judgment, AI collaboration, ownership, privacy and the real value the experience should create." data-fa="مسیر کاربر، قضاوت انسانی، همکاری با AI، مالکیت، حریم خصوصی و ارزش واقعی تجربه بررسی شد.">We examined the creator journey, human judgment, AI collaboration, ownership, privacy and the real value the experience should create.</p></div></div>
+          <div class="case-step reveal"><span>03</span><div><h3 data-en="The architecture" data-fa="معماری">The architecture</h3><p data-en="The idea became a guided venture-development environment with reviewable stages, clear outputs and human-controlled decisions." data-fa="ایده به یک محیط هدایت‌شدهٔ توسعهٔ پروژه تبدیل شد؛ با مراحل قابل‌بازبینی، خروجی‌های روشن و تصمیم‌های تحت کنترل انسان.">The idea became a guided venture-development environment with reviewable stages, clear outputs and human-controlled decisions.</p></div></div>
+          <div class="case-step reveal"><span>04</span><div><h3 data-en="The project package" data-fa="بستهٔ پروژه">The project package</h3><p data-en="Bilingual documentation, product vision, creator journey, governance, roadmap, pricing, business model and a handover path now exist in one traceable repository." data-fa="اکنون مستندات دوزبانه، چشم‌انداز محصول، مسیر کاربر، حاکمیت، نقشهٔ راه، قیمت‌گذاری، مدل کسب‌وکار و مسیر تحویل در یک ریپوی قابل‌ردگیری وجود دارد.">Bilingual documentation, product vision, creator journey, governance, roadmap, pricing, business model and a handover path now exist in one traceable repository.</p></div></div>
+          <div class="case-step reveal"><span>05</span><div><h3 data-en="The proof" data-fa="اثبات">The proof</h3><p data-en="Lewis OS itself was used to make the Danika idea understandable. The first project is also the first demonstration of the method." data-fa="خود Lewis OS برای قابل‌فهم کردن ایدهٔ دانیکا استفاده شد. اولین پروژه، اولین نمایش واقعی متد هم هست.">Lewis OS itself was used to make the Danika idea understandable. The first project is also the first demonstration of the method.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="The system behind the work" data-fa="سیستم پشت کار">The system behind the work</div><div><h2 class="reveal" data-en="One foundation. Many valuable outcomes." data-fa="یک زیربنا؛ خروجی‌های ارزشمند متعدد.">One foundation. Many valuable outcomes.</h2></div></div>
+        <div class="system-map">
+          <article class="system-card reveal"><span class="number">01</span><strong>neoOS</strong><small data-en="Principles and framework" data-fa="اصول و چارچوب">Principles and framework</small></article>
+          <article class="system-card reveal"><span class="number">02</span><strong>Neo Projects</strong><small data-en="Incubation workspace" data-fa="فضای رشد پروژه‌ها">Incubation workspace</small></article>
+          <article class="system-card reveal"><span class="number">03</span><strong>Lewis OS</strong><small data-en="Venture preparation method" data-fa="متد آماده‌سازی پروژه">Venture preparation method</small></article>
+          <article class="system-card reveal"><span class="number">04</span><strong>Danika</strong><small data-en="First living case" data-fa="اولین نمونهٔ زنده">First living case</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bridge">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="Human × AI" data-fa="انسان × هوش مصنوعی">Human × AI</div><div><h2 class="reveal" data-en="AI expands the thinking. Humans own the direction." data-fa="هوش مصنوعی فکر را گسترش می‌دهد؛ انسان مالک مسیر می‌ماند.">AI expands the thinking. Humans own the direction.</h2><p class="section-copy reveal" data-en="Lewis OS also helps each creator become capable of working with their own AI collaborator — without losing judgment, ownership or independence." data-fa="Lewis OS کمک می‌کند هر خالق بتواند با همکار هوش مصنوعی خودش کار کند؛ بدون آن‌که قضاوت، مالکیت یا استقلالش را از دست بدهد.">Lewis OS also helps each creator become capable of working with their own AI collaborator — without losing judgment, ownership or independence.</p></div></div>
+        <div class="human-ai">
+          <article class="role reveal"><span class="number" data-en="HUMAN AUTHORITY" data-fa="اختیار انسان">HUMAN AUTHORITY</span><h3 data-en="Decides and owns" data-fa="تصمیم می‌گیرد و مالک است">Decides and owns</h3><ul><li data-en="Identity and purpose" data-fa="هویت و هدف">Identity and purpose</li><li data-en="Ownership and consent" data-fa="مالکیت و رضایت">Ownership and consent</li><li data-en="Major decisions" data-fa="تصمیم‌های اصلی">Major decisions</li><li data-en="Final approval" data-fa="تأیید نهایی">Final approval</li></ul></article>
+          <article class="role ai reveal"><span class="number" data-en="AI CAPABILITY" data-fa="توانایی هوش مصنوعی">AI CAPABILITY</span><h3 data-en="Explores and assists" data-fa="کاوش می‌کند و یاری می‌دهد">Explores and assists</h3><ul><li data-en="Research and analysis" data-fa="پژوهش و تحلیل">Research and analysis</li><li data-en="Drafting and organization" data-fa="پیش‌نویس و سازمان‌دهی">Drafting and organization</li><li data-en="Contradiction detection" data-fa="تشخیص تناقض‌ها">Contradiction detection</li><li data-en="Continuity and documentation" data-fa="تداوم و مستندسازی">Continuity and documentation</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-en="Beyond one project" data-fa="فراتر از یک پروژه">Beyond one project</div><div><h2 class="reveal" data-en="A studio for ideas that deserve structure." data-fa="استودیویی برای ایده‌هایی که شایستهٔ ساختارند.">A studio for ideas that deserve structure.</h2><p class="section-copy reveal" data-en="The same method can prepare client ideas, create original ventures for sale and turn specialist knowledge into durable intellectual products." data-fa="همین متد می‌تواند ایدهٔ مشتریان را آماده کند، پروژه‌های اصیل برای فروش بسازد و دانش تخصصی را به محصولات فکری ماندگار تبدیل کند.">The same method can prepare client ideas, create original ventures for sale and turn specialist knowledge into durable intellectual products.</p></div></div>
+        <div class="future-grid">
+          <article class="service-card reveal"><span class="number">01</span><h3 data-en="Venture preparation" data-fa="آماده‌سازی پروژه">Venture preparation</h3><p class="card-copy" data-en="From a raw idea to an investable, sellable or buildable project package." data-fa="از ایدهٔ خام تا بسته‌ای قابل‌ساخت، قابل‌فروش یا قابل‌سرمایه‌گذاری.">From a raw idea to an investable, sellable or buildable project package.</p></article>
+          <article class="service-card reveal"><span class="number">02</span><h3 data-en="Knowledge products" data-fa="محصولات دانشی">Knowledge products</h3><p class="card-copy" data-en="Articles, books, courses and systems built from a specialist's original thinking." data-fa="مقاله، کتاب، دوره و سیستم‌هایی که از تفکر اصیل یک متخصص ساخته می‌شوند.">Articles, books, courses and systems built from a specialist's original thinking.</p></article>
+          <article class="service-card reveal"><span class="number">03</span><h3 data-en="Custom AI systems" data-fa="سیستم‌های اختصاصی AI">Custom AI systems</h3><p class="card-copy" data-en="AI operating systems, specialist models, agent architectures and responsible workflows." data-fa="سیستم‌عامل‌های هوش مصنوعی، مدل‌های تخصصی، معماری ایجنت و جریان‌های کاری مسئولانه.">AI operating systems, specialist models, agent architectures and responsible workflows.</p></article>
+          <article class="service-card reveal"><span class="number">04</span><h3 data-en="Ready-made opportunities" data-fa="فرصت‌های آماده">Ready-made opportunities</h3><p class="card-copy" data-en="Original, documented ventures prepared for builders, partners or acquisition." data-fa="پروژه‌های اصیل و مستند که برای سازنده، شریک یا خریدار آماده شده‌اند.">Original, documented ventures prepared for builders, partners or acquisition.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <div class="kicker reveal" data-en="The first credible next step" data-fa="اولین قدم بعدی معتبر">The first credible next step</div>
+        <h2 class="reveal" data-en="An idea becomes valuable when others can finally see it." data-fa="یک ایده زمانی ارزشمند می‌شود که دیگران بالاخره بتوانند آن را ببینند.">An idea becomes valuable when others can finally see it.</h2>
+        <p class="reveal" data-en="Lewis OS creates the clarity, architecture and evidence required to move from imagination toward execution — without taking the idea away from the person who owns it." data-fa="Lewis OS وضوح، معماری و شواهد لازم برای حرکت از تخیل به اجرا را می‌سازد؛ بدون آن‌که ایده را از صاحب آن بگیرد.">Lewis OS creates the clarity, architecture and evidence required to move from imagination toward execution — without taking the idea away from the person who owns it.</p>
+        <a class="cta reveal" href="../README.md" data-en="Review the project foundation" data-fa="زیربنای پروژه را ببینید">Review the project foundation</a>
+      </div>
     </section>
   </main>
+
+  <footer><div class="wrap footer-row"><span>Lewis OS · Powered by neoOS</span><span data-en="A living proposal · 2026" data-fa="یک پیشنهاد زنده · ۲۰۲۶">A living proposal · 2026</span></div></footer>
+
+  <script>
+    const root = document.documentElement;
+    const button = document.getElementById('lang');
+    const progress = document.getElementById('progress');
+    const nodes = document.querySelectorAll('[data-en][data-fa]');
+
+    function setLanguage(lang) {
+      const fa = lang === 'fa';
+      root.lang = lang;
+      root.dir = fa ? 'rtl' : 'ltr';
+      button.textContent = fa ? 'EN' : 'FA';
+      button.setAttribute('aria-label', fa ? 'Switch to English' : 'تغییر زبان به فارسی');
+      nodes.forEach(node => node.textContent = node.dataset[lang]);
+      localStorage.setItem('lewis-language', lang);
+    }
+    button.addEventListener('click', () => setLanguage(root.lang === 'fa' ? 'en' : 'fa'));
+    setLanguage(localStorage.getItem('lewis-language') || 'en');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
+    }
+    addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
 </body>
 </html>
